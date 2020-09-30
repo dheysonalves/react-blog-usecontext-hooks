@@ -34,9 +34,6 @@ const index = ({ navigation }) => {
               <S.CardHeader>
                 <S.DataText>March 23, 2020</S.DataText>
                 <S.IconsWrapper>
-                  <TouchableOpacity>
-                    <FontAwesome5 name="edit" size={20} color="#124E78" />
-                  </TouchableOpacity>
                   <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                     <FontAwesome5 name="trash" size={20} color="#D74E09" />
                   </TouchableOpacity>

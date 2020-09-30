@@ -28,7 +28,7 @@ export const TitleText = styled.Text`
 
 export const IconsWrapper = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 18%;
 `;
 
