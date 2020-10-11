@@ -29,7 +29,7 @@ yarn start
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the [MIT] License - see the [LICENSE.md](https://github.com/Dheyson/react-blog-usecontext-hooks/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 
