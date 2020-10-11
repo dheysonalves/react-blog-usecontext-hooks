@@ -5,6 +5,14 @@
 
 This was a guided study for learning the useContext hooks concepts from React.
 
+## Screenshots
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://i.ibb.co/qMWGkVL/screenshot-1.jpg" width="200px" height="auto" alt="screenshot-1"/>
+  <img src="https://i.ibb.co/kqWsp8L/screenshot-2.jpg" width="200x" height="auto" alt="screenshot-2" />
+  <img src="https://i.ibb.co/CvXz71y/screenshot-3.jpg" width="200px" height="auto" alt="screenshot-3" />
+</div>
+
 ## Description
 
 The blog sample can create and handle his posts. With a custom interface styles. We handle all the requests with a Blog Context wrapper provider, based on useContext concepts.
