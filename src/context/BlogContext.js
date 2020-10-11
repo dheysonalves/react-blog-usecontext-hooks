@@ -1,9 +1,12 @@
 import React, { useState, useReducer } from "react";
 import CreateDataContext from "./createDataContext";
+import jsonServer from '../services/jsonServer';
 // import { Container } from './styles';
 
 const BlogReducer = (state, action) => {
   switch (action.type) {
+    case 'get_blogposts':
+      return action.payload;
     case "add_blogpost":
       return [
         ...state,
@@ -24,16 +27,28 @@ const BlogReducer = (state, action) => {
   }
 };
 
+const getBlogPosts = dispatch => {
+  return async () => {
+    const response = await jsonServer.get('/blogposts');
+
+    dispatch({ type: 'get_blogposts', payload: response.data })
+  }
+}
+
 const addBlogPost = (dispatch) => {
-  return (title, content, callback) => {
-    dispatch({ type: "add_blogpost", payload: { title, content } });
+  return async (title, content, callback) => {
+    await jsonServer.post('/blogposts', { title, content});
+
+    if (callback) {
     callback();
+    }
   };
 };
 
 const editBlogPost = (dispatch) => {
-  return (id, title, content, callback) => {
-    dispatch({ type: "edit_blogpost", payload: { id, title, content } });
+  return async (id, title, content, callback) => {
+    await jsonServer.put(`/blogposts/${id}`, { title, content });
+    // dispatch({ type: "edit_blogpost", payload: { id, title, content } });
     if (callback) {
       callback();
     }
@@ -41,13 +56,14 @@ const editBlogPost = (dispatch) => {
 }
 
 const deleteBlogPost = (dispatch) => {
-  return (id) => {
+  return async (id) => {
+    await jsonServer.delete(`/blogposts/${id}`);
     dispatch({ type: "delete_blogpost", payload: id });
   };
 };
 
 export const { Context, Provider } = CreateDataContext(
   BlogReducer,
-  { addBlogPost, deleteBlogPost, editBlogPost },
-  [{ id: 1, title: "Test", content: "This is a content" }]
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
+  []
 );

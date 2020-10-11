@@ -1,3 +1,9 @@
 {
-	"blogposts": []
+  "blogposts": [
+    {
+      "title": "New blog post8gggh",
+      "content": "New contenta",
+      "id": 6
+    }
+  ]
 }

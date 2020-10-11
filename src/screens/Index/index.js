@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   StyleSheet,
   FlatList,
@@ -13,14 +13,26 @@ import { FontAwesome5, Feather } from "@expo/vector-icons";
 import * as S from "./styles";
 
 const index = ({ navigation }) => {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, getBlogPosts, deleteBlogPost } = useContext(Context);
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    getBlogPosts();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts();
+    });
+
+    return () => {
+      listener.remove();
+    };
+  }, []);
 
   return (
     <S.Wrapper>
       {state && (
         <S.CardHeader>
-          <S.TitleText>Elements List</S.TitleText>
+          <S.TitleText>Blog List</S.TitleText>
         </S.CardHeader>
       )}
       <FlatList
